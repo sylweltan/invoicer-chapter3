@@ -76,6 +76,7 @@ func main() {
 
 	// register routes
 	r := mux.NewRouter()
+        r.Headers(("X-Content-Type-Options", "nosniff"))
 	r.HandleFunc("/", iv.getIndex).Methods("GET")
 	r.HandleFunc("/__heartbeat__", getHeartbeat).Methods("GET")
 	r.HandleFunc("/invoice/{id:[0-9]+}", iv.getInvoice).Methods("GET")
@@ -249,7 +250,7 @@ func getHeartbeat(w http.ResponseWriter, r *http.Request) {
 // handleVersion returns the current version of the API
 func getVersion(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(fmt.Sprintf(`{
-"source": "https://github.com/Securing-DevOps/invoicer",
+"source": "https://github.com/sylweltan/invoicer",
 "version": "%s",
 "commit": "%s",
 "build": "https://circleci.com/gh/Securing-DevOps/invoicer/"
