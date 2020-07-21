@@ -76,7 +76,7 @@ func main() {
 
 	// register routes
 	r := mux.NewRouter()
-        r.Headers(("X-Content-Type-Options", "nosniff")
+        r.Headers(("X-Content-Type-Options": "nosniff")
 	r.HandleFunc("/", iv.getIndex).Methods("GET")
 	r.HandleFunc("/__heartbeat__", getHeartbeat).Methods("GET")
 	r.HandleFunc("/invoice/{id:[0-9]+}", iv.getInvoice).Methods("GET")
