@@ -217,7 +217,7 @@ func requestBasicAuth(w http.ResponseWriter) {
 }
 
 func (iv *invoicer) getIndex(w http.ResponseWriter, r *http.Request) {
-        if len(r.Header.Get("Authorization")) < 8 || 
+        if len(r.Header.Get("Authorization")) < 8 ||
             r.Header.Get("Authorization")[0:5] != `Basic` {
               requestBasicAuth(w)
               return
