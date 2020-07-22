@@ -7,9 +7,6 @@ package main
 
 //go:generate ./version.sh
 
-const defaultUser string = "samantha"
-const defaultPass string = "1ns3cur3"
-
 import (
 	"crypto/hmac"
 	"crypto/rand"
@@ -39,6 +36,8 @@ type invoicer struct {
 }
 
 func main() {
+        const defaultUser string = "samantha"
+        const defaultPass string = "1ns3cur3"
 	var (
 		iv  invoicer
 		err error
@@ -212,7 +211,7 @@ func (iv *invoicer) deleteInvoice(w http.ResponseWriter, r *http.Request) {
 }
 
 func requestBasicAuth(w http.ResponseWriter) {
-    w.Header().Set("WWW-Authenticate", 'Basic realm="invoicer"')
+    w.Header().Set("WWW-Authenticate", `Basic realm="invoicer"`)
     w.WriteHeader(401)
     w.Write([]byte('please authenticate'))
 }
