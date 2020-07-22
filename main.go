@@ -213,12 +213,12 @@ func (iv *invoicer) deleteInvoice(w http.ResponseWriter, r *http.Request) {
 func requestBasicAuth(w http.ResponseWriter) {
     w.Header().Set("WWW-Authenticate", `Basic realm="invoicer"`)
     w.WriteHeader(401)
-    w.Write([]byte('please authenticate'))
+    w.Write([]byte(`please authenticate`))
 }
 
 func (iv *invoicer) getIndex(w http.ResponseWriter, r *http.Request) {
         if len(r.Header.Get("Authorization")) < 8 || 
-            r.Header.Get("Authorization")[0:5] != 'Basic' {
+            r.Header.Get("Authorization")[0:5] != `Basic` {
               requestBasicAuth(w)
               return
         }
