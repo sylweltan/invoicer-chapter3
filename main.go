@@ -35,9 +35,10 @@ type invoicer struct {
 	store *gormstore.Store
 }
 
+const defaultUser string = "samantha"
+const defaultPass string = "1ns3cur3"
+
 func main() {
-        const defaultUser string = "samantha"
-        const defaultPass string = "1ns3cur3"
 	var (
 		iv  invoicer
 		err error
